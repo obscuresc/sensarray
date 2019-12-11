@@ -7,7 +7,7 @@
 # https://pythonhosted.org/pyserial/shortintro.html
 # https://docs.python.org/3/library/venv.html
 # https://pythonbasics.org/pyqt-grid/
-# 
+#
 # Jack Arney
 # 11-12-2019
 ################################################################################
@@ -18,7 +18,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 from PyQt5.QtWidgets import QPushButton, QMessageBox, QGridLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
-import pyserial
+import serial
 
 def buttonStartBehaviour():
 
