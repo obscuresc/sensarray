@@ -4,6 +4,10 @@
 # Reads from an array of HVAC sensors, providing means to view and log
 #   measurements while showing statistics of the results.
 #
+# https://pythonhosted.org/pyserial/shortintro.html
+# https://docs.python.org/3/library/venv.html
+# https://pythonbasics.org/pyqt-grid/
+# 
 # Jack Arney
 # 11-12-2019
 ################################################################################
@@ -36,7 +40,7 @@ def window():
 
     # labels show text or images
     textLabel = QLabel(widget)
-    textLabel.setText("Hello World!")
+    textLabel.setText("Sensarray")
     textLabel.move(110, 85)
 
     # start button
