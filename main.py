@@ -60,7 +60,7 @@ def window():
 
     # start position of window, and size
     widget.setGeometry(50, 50, 320, 200)
-    widget.setWindowTitle("PyQt5 Example")
+    widget.setWindowTitle("Sensarray")
     widget.show()
 
     sys.exit(app.exec_())
