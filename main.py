@@ -19,35 +19,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 import serial
 
-class GroupBox(QWidget):
-
-    def __init__(self):
-        QWidget.__init__(self)
-
-        self.setWindowTitle("GroupBox")
-        layout = QGridLayout()
-        self.setLayout(layout)
-
-        groupbox = QGroupBox("GroupBox Example")
-        groupbox.setCheckable(True)
-        layout.addWidget(groupbox)
-
-        vbox = QVBoxLayout()
-        groupbox.setLayout(vbox)
-
-        radiobutton = QRadioButton("RadioButton 1")
-        vbox.addWidget(radiobutton)
-
-        radiobutton = QRadioButton("RadioButton 2")
-        vbox.addWidget(radiobutton)
-
-        radiobutton = QRadioButton("RadioButton 3")
-        vbox.addWidget(radiobutton)
-
-        radiobutton = QRadioButton("RadioButton 4")
-        vbox.addWidget(radiobutton)
-
-def buttonStartBehaviour():
+def buttonStartBehaviour(self):
 
     msgBox = QMessageBox()
     msgBox.setWindowTitle("Start Connection")
@@ -58,6 +30,9 @@ def buttonStartBehaviour():
     returnValue = msgBox.exec()
     if returnValue == QMessageBox.Ok:
         print('Ok clicked')
+
+    self.setText('Stop Connection')
+
 
 def buttonSaveBehaviour():
 
@@ -74,8 +49,8 @@ def window():
     widget = QWidget()
     widget.setGeometry(50, 50, 320, 320)
     widget.setWindowTitle("Sensarray")
-    vbLayout = QVBoxLayout()
-    widget.setLayout(vbLayout)
+    glMain = QGridLayout()
+    widget.setLayout(glMain)
 
     ### serial settings groupbox
     gbSerial = QGroupBox("Serial Settings")
@@ -143,8 +118,24 @@ def window():
     cbStopBits.addItem('None')
     glSerial.addWidget(cbStopBits, 4, 1)
 
+    ### control buttons
+
+    # redo according to https://pythonprogramming.net/buttons-pyqt-tutorial/
+    # behaviour oriented classes
+    glControls = QGridLayout()
+    pbStartStop = QPushButton()
+    pbStartStop.setText('Start Log')
+    pbStartStop.clicked.connect(self.buttonStartBehaviour)
+    glControls.addWidget(pbStartStop, 0, 0)
+
+    pbSave = QPushButton()
+    pbSave.setText('Save')
+    glControls.addWidget(pbStartStop, 0, 1)
+
     # add items
-    vbLayout.addWidget(gbSerial)
+    glMain.addWidget(gbSerial, 0, 0, 5, 2)
+    glMain.addWidget(pbStartStop, 6, 0)
+    glMain.addWidget(pbSave, 6, 1)
     widget.show()
     sys.exit(app.exec_())
 
